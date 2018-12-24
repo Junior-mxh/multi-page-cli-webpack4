@@ -3,10 +3,14 @@
  const HtmlWebpackPlugin = require('html-webpack-plugin');
  const devMode = process.env.NODE_ENV !== 'production'
  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+ const assetsPublicPath = devMode  ? '/' : './' //项目根区分环境
  module.exports = {
    entry: {
-     poliyfill: "@babel/polyfill",
-     app: path.join(__dirname, '../src/index.js')
+    //  poliyfill: "@babel/polyfill",
+    //  app: path.join(__dirname, '../src/index.js')
+     a:path.join(__dirname, '../src/view/a.js'),
+     b:path.join(__dirname, '../src/view/b.js')
    },
    module: {
     rules: [
@@ -41,7 +45,16 @@
        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
      }),
      new HtmlWebpackPlugin({
-       title: 'Production'
+        chunks: ['runtime','common','a'],
+        title: 'a',
+        filename: "a.html",
+        chunksSortMode: 'manual'//应用文件顺序
+     }),
+     new HtmlWebpackPlugin({
+        chunks: ['runtime','common','b'],
+        title: "b",
+        filename: "b.html",
+        chunksSortMode: 'manual'//应用文件顺序
      }),
      new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -51,6 +64,7 @@
     }),
    ],
    output: {
+     publicPath:assetsPublicPath,//项目根
      filename: 'js/[name].bundle.js',
      path: path.resolve(__dirname, '../dist')
    }
