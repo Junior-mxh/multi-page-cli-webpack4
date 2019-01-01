@@ -7,7 +7,8 @@
    devServer: {
      contentBase: '../dist',
      hot: true,
-     port:8000
+     port:8000,
+     openPage: 'a.html',
    },
    plugins: [
     new webpack.NamedModulesPlugin(),

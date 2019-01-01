@@ -7,7 +7,7 @@
 
  module.exports = merge(common, {
    mode: 'production',
-   devtool: 'source-map',
+  //  devtool: 'source-map',
    optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -35,14 +35,15 @@
           minChunks: 2,
           minSize: 1,
           priority: 0
-        }
+        },
         // 首先: 打包node_modules中的文件
-        // vendor: {
-        //   name: "vendor",
-        //   test: /[\\/]node_modules[\\/]/,
-        //   chunks: "all",
-        //   priority: 10
-        // }
+        vendor: {
+          name: "dependencies",
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "all",
+          minChunks: 1,
+          priority: 10
+        }
       }
       // cacheGroups:{ // 这里开始设置缓存的 chunks
       //     priority: 0, // 缓存组优先级
