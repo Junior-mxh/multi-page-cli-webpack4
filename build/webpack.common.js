@@ -24,7 +24,7 @@
 console.log(viewsHtmlPlugins)
  module.exports = merge([{
    entry: {
-    'dependencies':viewsConfig.dependencies
+    // 'dependencies':viewsConfig.dependencies
     //  app: path.join(__dirname, '../src/index.js')
     //  a:path.join(__dirname, '../src/views/a/app.js'),
     //  b:path.join(__dirname, '../src/views/b/app.js'),
