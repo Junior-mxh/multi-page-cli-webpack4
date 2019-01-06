@@ -4,9 +4,12 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js --mode production",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --config build/webpack.dev.js --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run create && npm run build:dist",
+    "dev":"npm run create && npm run dev:pro",
+    "build:dist": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js --mode production",
+    "dev:pro": "cross-env NODE_ENV=development webpack-dev-server --open --config build/webpack.dev.js --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create":"node config/create-views.js"
   },
   "keywords": [],
   "author": "",

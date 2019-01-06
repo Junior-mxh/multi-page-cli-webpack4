@@ -5,8 +5,8 @@
  const devMode = process.env.NODE_ENV !== 'production';
  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
  const VueLoaderPlugin = require('vue-loader/lib/plugin');
- const viewsConfig = require('./views.conf');
- const viewsHtmlPlugins = require('./views.html-plugins');
+//  const viewsConfig = require('../config/views.conf');
+ const viewsHtmlPlugins = require('../config/views.html-plugins');
  const assetsPublicPath = devMode  ? '/' : './' //项目根区分环境
  function resolve (dir) {
   return path.join(__dirname, '..', dir)
