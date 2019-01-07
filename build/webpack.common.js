@@ -25,10 +25,6 @@ console.log(viewsHtmlPlugins)
  module.exports = merge([{
    entry: {
     // 'dependencies':viewsConfig.dependencies
-    //  app: path.join(__dirname, '../src/index.js')
-    //  a:path.join(__dirname, '../src/views/a/app.js'),
-    //  b:path.join(__dirname, '../src/views/b/app.js'),
-    //  b:path.join(__dirname, '../src/view/b.js')
    },
    resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -70,20 +66,6 @@ console.log(viewsHtmlPlugins)
      new webpack.DefinePlugin({
        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
      }),
-    //  new HtmlWebpackPlugin({
-    //     chunks: ['runtime','common','a'],
-    //     title: 'a',
-    //     template:path.join(__dirname, '../src/index.html'),
-    //     filename: "a.html",
-    //     chunksSortMode: 'manual'//应用文件顺序
-    //  }),
-    //  new HtmlWebpackPlugin({
-    //   chunks: ['runtime','common','b'],
-    //   title: 'b',
-    //   template:path.join(__dirname, '../src/index.html'),
-    //   filename: "b.html",
-    //   chunksSortMode: 'manual'//应用文件顺序
-    //  }),
      new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
@@ -95,7 +77,7 @@ console.log(viewsHtmlPlugins)
    ],
    output: {
      publicPath:assetsPublicPath,//项目根
-     filename: 'js/[name].bundle.js',
+     filename:  devMode ?'js/[name].bundle.js':'js/[name].[hash].js',
      path: path.resolve(__dirname, '../dist')
    }
  }].concat(viewsHtmlPlugins))
